@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const express = require('express')
 const exphbs = require("express-handlebars");
 const routes = require('./controllers/staff_controller.js')
@@ -12,7 +10,6 @@ app.set("view engine", "handlebars");
 app.use(express.static('public'))
 app.use(express.json());
 app.use(routes);
-
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {

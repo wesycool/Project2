@@ -1,3 +1,4 @@
+require('dotenv').config()
 const mysql = require("mysql");
 
 class Database {
@@ -24,14 +25,17 @@ class Database {
   }
 }
 
-// Need a dotenv file with DB_HOST, DB_USER, DB_PASS, and DB_NAME
-const db = new Database({
-    host: process.env.DB_HOST,
+// Localhost Info
+const localhost = {
+    host: localhost,
     port: 3306,
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
     insecureAuth : true
-});
+}
+
+// Access SQL Database
+const db = new Database( process.env.JAWSDB_URL || localhost )
 
 module.exports = db
