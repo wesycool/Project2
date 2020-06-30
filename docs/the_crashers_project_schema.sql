@@ -1,0 +1,101 @@
+DROP DATABASE IF EXISTS the_crashers_db;
+CREATE database the_crashers_db;
+
+USE the_crashers_db;
+
+CREATE TABLE client (
+	id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	email VARCHAR(100),
+	password VARCHAR(30),
+	first_name VARCHAR(255),
+	last_name VARCHAR(255),
+	address VARCHAR(255),
+	city VARCHAR(255),
+	province VARCHAR(2),
+	postal_code VARCHAR(6),
+	phone VARCHAR(20),
+	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE Table transactions (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	client_id int,
+	isDelivery BOOLEAN,
+	isPaid BOOLEAN,
+	gross_total DECIMAL(10,2),
+	tax_id int,
+	tax_amount DECIMAL(10,2),
+	net_total DECIMAL(10,2),
+	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE order_info (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	status VARCHAR(30),
+	transaction_id int,
+	product_id int,
+	ingredient VARCHAR(255),
+	quantity int,
+	price DECIMAL(10,2),
+	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE tax (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	province VARCHAR(2),
+	tax_rate DECIMAL(5,3),
+	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE products (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	description VARCHAR(255),
+	size INT,
+	price DECIMAL(10,2),
+	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE staff (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	email VARCHAR(100),
+	password VARCHAR(30),
+	first_name VARCHAR(255),
+	last_name VARCHAR(255),
+	address VARCHAR(255),
+	city VARCHAR(255),
+	province VARCHAR(2),
+	postal_code VARCHAR(6),
+	phone VARCHAR(20),
+	role_id INT,
+	manager_id INT,
+	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE department (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(255),
+	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE timestamp (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	staff_id INT,
+	checknum VARCHAR(3),
+	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE timesheet (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	staff_id INT,
+	start_time DATETIME,
+	end_time DATETIME,
+	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE role (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	title VARCHAR(255),
+	salary DECIMAL(10,2),
+	department_id INT,
+	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
