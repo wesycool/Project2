@@ -19,6 +19,7 @@ async function startup(){
     if (!sessionStorage.username) window.location.href = './login/';
     else {
         await getColor()
+        await getWeatherAPI()
         document.getElementById('username').value = username
         document.querySelector('#profileName').value = name
         document.getElementById(selectColor).checked = true
@@ -57,7 +58,7 @@ function sidebarItemColor(eventID){
 //Setting Theme Change onClick
 document.querySelector('#theme').addEventListener('click',function(){
     selectColor = event.target.id
-    theme = selectColor
+    getData.theme = selectColor
     localStorage[username] = JSON.stringify(getData)
     themeChange(selectColor, true)
 })
@@ -68,8 +69,8 @@ function themeChange( id , isSetting){
     document.querySelector('.navbar').setAttribute('style',`background-color: ${color[id][3]} !important`)
     document.querySelector('.sidebar').setAttribute('style',`background-color: ${color[id][0]} !important`)
     document.querySelector(`a${(isSetting)? '#setting':'#home'}`).setAttribute('style',`background-color: ${color[id][1]} !important`)
-    window.document.title = `${name} in a nutShell`
-    document.querySelector('#navbarTitle').innerHTML = `<img src="https://user-images.githubusercontent.com/7273249/30583687-f75c2e34-9d27-11e7-91c6-a539e531f10f.png" width='50px'> ${window.document.title}`
+    window.document.title = `${name}`
+    document.querySelector('#navbarTitle').innerHTML = `${window.document.title}`
 
     document.querySelectorAll('.btn-cancel').forEach(button =>{
         button.setAttribute('style',`background-color: ${color[id][(selectColor == 'sunset')? 0 : 1]} !important`)
@@ -94,13 +95,13 @@ function metricChange(selectColor){
         button.setAttribute('style', `background-color: ${inactiveColor} !important; border-color: ${inactiveColor} !important;`)
     })
 
-    document.querySelector(`label#${getData.units}`).setAttribute('class','btn btn-secondary active')
+    document.querySelector(`label#${units}`).setAttribute('class','btn btn-secondary active')
     document.querySelector('.active').setAttribute('style', `background-color: ${activeColor} !important; border-color: ${activeColor} !important;`)
 }
 
 //Setting Weather Unit Change onClick
 function changeUnit(){
-    units = event.target.id
+    getData.units = event.target.id
     localStorage[username] = JSON.stringify(getData)
     metricChange(selectColor)
     getLocation(units)
@@ -135,7 +136,7 @@ document.querySelector('#saveProfile').addEventListener('click',function(){
     if (setPassword.value != ''){
         confirmPassword.setAttribute('class',`form-control ${(condition)? '':'is-invalid'}`)
         if (condition) {
-            password = setPassword.value
+            getData.password = setPassword.value
             confirmPassword.value = ''
             setPassword.value = ''       
         }
@@ -144,7 +145,7 @@ document.querySelector('#saveProfile').addEventListener('click',function(){
     const profileName = document.querySelector('#profileName')
 
     if (profileName.value == '') profileName.value = name
-    else name = profileName.value
+    else getData.name = profileName.value
     
     localStorage[username] = JSON.stringify(getData)
     themeChange(selectColor, true)
