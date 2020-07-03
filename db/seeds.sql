@@ -1,3 +1,5 @@
+USE the_crashers_db;
+
 -- client ( id, email, password, firt_name, last_name, address, city, province, postal_code, phone, createdAt )
 -- INSERT INTO client VALUES(0, email, password, first_name, last_name, address, city, province, postal_code, phone, default);
 INSERT INTO client VALUES(0, "fil@asdsa.com", "password", "Fil", "L", "123 Streetname", "Toronto", "ON", "A1B2C3", "(123) 123-1234", default);
