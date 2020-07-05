@@ -98,7 +98,7 @@ const theCrashers = require("../models/theCrashers");
 router.get('/pat-test/:tableName', async (req,res) => {
 
   const {tableName} = req.params
-  const name = "transactions"
+  
   const list = await theCrashers.getTable(tableName)
   
   res.send(list)
@@ -117,6 +117,17 @@ router.get('/pat-test/:id/:status', async (req, res) => {
   await theCrashers.updateStatus(id, status)
 
   res.send(test)
+})
+
+router.get('/transactionitems/:transactionNum', async (req,res) => {
+
+  const {transactionNum} = req.params
+  const products = await theCrashers.getPrdTrans(transactionNum)
+
+  console.log(products)
+
+  res.send(products)
+
 })
 
 // Export routes for server.js to use.

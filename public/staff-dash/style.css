@@ -24,3 +24,7 @@ body {
     background-color: #77dd77;
     color: black;
 }
+
+.btn {
+    border-radius: 0rem;
+}

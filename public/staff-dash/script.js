@@ -2,7 +2,7 @@
 async function getTransaction() {
     const data = await fetch("./pat-test/transactions").then(response => response.json())
     // .then(data => {console.log(data)})
-    document.querySelector("#transactions").innerHTML = ``
+    // document.querySelector("#transactions").innerHTML = ``
     for ( let idx = 0 ; idx < data.length ; idx++ ) { 
         document.querySelector("#transactions").innerHTML += 
             `<button id="trns${data[idx].id}" data-transaction="${data[idx].id}" data-status="${data[idx].status}" type="button" class="btn" onclick="changeStatus(event)">${data[idx].id} -- ${data[idx].status} -- ${data[idx].client_id}</button>`
@@ -25,6 +25,11 @@ async function getTransaction() {
             break;
         }
     }
+    const listProd = await fetch("./transactionitems/1").then(response => response.json())
+    console.log(listProd)
+
+    const listProdTwo = await fetch("./transactionitems/2").then(response => response.json())
+    console.log(listProdTwo)
 }
 
 async function updateStatus(id, status) {
