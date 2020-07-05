@@ -99,8 +99,8 @@ router.get('/pat-test/:tableName', async (req,res) => {
 
   const {tableName} = req.params
   
-  const list = await theCrashers.getTable(tableName)
-  
+  const list = (tableName == "alltrans") ?  await theCrashers.getAllTrans() :  await theCrashers.getTable(tableName)
+
   res.send(list)
 
   console.log(list)
@@ -124,11 +124,12 @@ router.get('/transactionitems/:transactionNum', async (req,res) => {
   const {transactionNum} = req.params
   const products = await theCrashers.getPrdTrans(transactionNum)
 
-  console.log(products)
+  // console.log(products)
 
   res.send(products)
 
 })
+
 
 // Export routes for server.js to use.
 module.exports = router;

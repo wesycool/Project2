@@ -89,8 +89,7 @@ CREATE TABLE timestamp (
 CREATE TABLE timesheet (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	staff_id INT,
-	start_time DATETIME,
-	end_time DATETIME,
+	workdays VARCHAR(255),
 	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

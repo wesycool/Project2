@@ -18,21 +18,20 @@
         <br>
 		<div class="container" style="max-width: 768px;">
 			<div id="transactions" class="row">
-				<button id="trns${data[idx].id}" data-transaction="${data[idx].id}" data-status="${data[idx].status}" type="button" class="btn btn-primary" onclick="changeStatus(event)">
+				<button id="trns${transaction.id}" data-transaction="${transaction.id}" data-status="${transaction.status}" type="button" class="btn btn-primary" onclick="changeStatus(event)">
 					<div class="row">
 						<div class="col-12 text-center">
-							<p>${data[idx].status}</p>
+							<p>${transaction.status}</p>
 						</div>
 						<div class="col-1 text-left">
 							<p>
-								Transaction#${data[idx].id}
+								Transaction#${transaction.id}
 							</p>
 						</div>
-						<div id="prd${product_id}" class="col-11 text-right">
-							<p>${quantity} x ${product_name}
-							<br>${quantity} x ${product_name}
-							<br>${quantity} x ${product_name}
-							</p>
+						<div class="col-11 text-right">
+							<ul id="productList${transaction.id}">
+
+							</ul>
 						</div>
 					</div>
 				</button>

@@ -2,7 +2,6 @@ body {
     background-color: #202020;
 }
 
-
 .complete {
     /* background-color: #d3d3d3; */
     /* color: black; */
@@ -27,4 +26,13 @@ body {
 
 .btn {
     border-radius: 0rem;
+    margin-bottom: 5px;
+}
+
+.btn-warning {
+    color:#fff;
+}
+
+.btn-warning:hover {
+    color: #fff;
 }
