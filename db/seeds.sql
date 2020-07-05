@@ -11,8 +11,8 @@ INSERT INTO department VALUES(0, "Main Location 1", default);
 
 -- order_info ( id, status, transaction_id, product_id, ingredient, quantity, price, createdAt )
 -- INSERT INTO order_info VALUES(0, "status", transaction_id, product_id, "addinfo", quantity, price, default);
-INSERT INTO order_info VALUES(0, "Delivering", 1, 1, "Additional information", 1, 5.99, default);
-INSERT INTO order_info VALUES(0, "Delivering", 1, 2, "Additional information", 2, 7.99, default);
+INSERT INTO order_info VALUES(0, 1, 1, "Additional information", 1, 5.99, default);
+INSERT INTO order_info VALUES(0, 1, 2, "Additional information", 2, 7.99, default);
 
 -- products ( id, description, size, price, createdAt )
 -- INSERT INTO products VALUES(0, "description", "size", price, default);
@@ -77,4 +77,4 @@ INSERT INTO tax VALUES(0, "YT", 5, default);
 
 -- transactions ( id, client_id, isDelivery, isPaid, gross_total, tax_id, tax_amount, net_total, createdAt )
 -- INSERT INTO transactions VALUES(0, client_id, isDelivery, isPaid, gross_total, tax_id, tax_amount, net_total, default);
-INSERT INTO transactions VALUES(1, 1, TRUE, TRUE, 21.97, 9, 13, 24.83, default);
+INSERT INTO transactions VALUES(1, 1, "Preparing",TRUE, TRUE, 21.97, 9, 13, 24.83, default);

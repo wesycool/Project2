@@ -20,6 +20,7 @@ CREATE TABLE client (
 CREATE Table transactions (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	client_id int,
+    status VARCHAR(20),
 	isDelivery BOOLEAN,
 	isPaid BOOLEAN,
 	gross_total DECIMAL(10,2),
@@ -31,12 +32,11 @@ CREATE Table transactions (
 
 CREATE TABLE order_info (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	status VARCHAR(30),
 	transaction_id int,
 	product_id int,
 	addinfo VARCHAR(255),
 	quantity int,
-	price DECIMAL(10,2),
+	order_price DECIMAL(10,2),
 	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -51,10 +51,9 @@ CREATE TABLE products (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	description VARCHAR(255),
 	size VARCHAR(10),
-	price DECIMAL(10,2),
+	set_price DECIMAL(10,2),
 	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-medium
 
 CREATE TABLE staff (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
