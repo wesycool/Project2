@@ -7,7 +7,7 @@ function selectAll(table) {
 
 // update an entry based on ID
 function updateOne( id, field, value ) {
-    return db.query( `UPDATE transactions SET status=? WHERE id=?`, 
+    return db.query( `UPDATE transactions SET ? WHERE id=?`, 
         [ { [field]: value }, id ] )
 }
 
