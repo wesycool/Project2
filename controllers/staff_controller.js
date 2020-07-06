@@ -75,7 +75,7 @@ router.get("/staff-portal/", (req, res) => {
 });
 
 router.get("/staff-portal/dashboard", (req, res) => {
-  res.render("staff-dashboard", data);
+  res.render("staff-dashboard");
 });
 
 router.get('/staff-portal/api/:tab', (req,res) => {
@@ -95,7 +95,7 @@ router.get('/staff-portal/api/:api/:units/:lat/:lon', async (req,res) => {
 // pat testing
 const theCrashers = require("../models/theCrashers");
 
-router.get('/pat-test/:tableName', async (req,res) => {
+router.get('/staff-portal/dashboard/:tableName', async (req,res) => {
 
   const {tableName} = req.params
   
@@ -107,10 +107,10 @@ router.get('/pat-test/:tableName', async (req,res) => {
 
 })
 
-router.get('/pat-test/:id/:status', async (req, res) => {
+router.get('/staff-portal/dashboard/:id/:status', async (req, res) => {
   const {id, status} = req.params
 
-  console.log(`-- id: ${id}  status: ${status}`)
+  // console.log(`-- id: ${id}  status: ${status}`)
 
   const test = "Transaction status updated !"
 
@@ -119,7 +119,7 @@ router.get('/pat-test/:id/:status', async (req, res) => {
   res.send(test)
 })
 
-router.get('/transactionitems/:transactionNum', async (req,res) => {
+router.get('/staff-portal/dashboard/transactionitems/:transactionNum', async (req,res) => {
   const {transactionNum} = req.params
   const products = await theCrashers.getPrdTrans(transactionNum)
 

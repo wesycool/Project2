@@ -1,7 +1,7 @@
 // Get transactions data
 async function getTransaction() {
-    const transactions = await fetch("./pat-test/transactions").then(response => response.json())
-    const listProd = await fetch(`./pat-test/alltrans`).then(response => response.json())
+    const transactions = await fetch("/staff-portal/dashboard/transactions").then(response => response.json())
+    const listProd = await fetch(`/staff-portal/dashboard/alltrans`).then(response => response.json())
     // .then(data => {console.log(data)})
 
     document.querySelector("#transactions").innerHTML = ``
@@ -9,17 +9,17 @@ async function getTransaction() {
     for ( transaction of transactions ) { 
         document.querySelector("#transactions").innerHTML +=            
         `
-        <button id="trns${transaction.id}" data-transaction="${transaction.id}" data-status="${transaction.status}" type="button" class="btn btn-primary" onclick="changeStatus(event)">
+        <button id="trns${transaction.id}" data-transaction="${transaction.id}" data-status="${transaction.status}" type="button" class="btn btn-block" onclick="changeStatus(event)">
             <div class="row">
                 <div class="col-12 text-center">
                     <p style="font-weight:bolder;">${transaction.status}</p>
                 </div>
-                <div  class="col text-left">
+                <div class="col text-left">
                     <p>
                         Transaction #${transaction.id}
                     </p>
                 </div>
-                <div  class="col text-right">
+                <div class="col text-right">
                     <p id="productList${transaction.id}">
 
                     </p>
@@ -39,7 +39,7 @@ async function getTransaction() {
         const myStatus = document.querySelector(`#trns${transaction.id}`)
 
         switch (transaction.status) {
-            case "Pending":
+            case "Received Order":
                 myStatus.classList.add("btn-danger")
             break;
             case "Preparing":
@@ -57,7 +57,7 @@ async function getTransaction() {
 
 // Update DB with status
 async function updateStatus(id, status) {
-    await fetch(`./pat-test/${id}/${status}`)
+    await fetch(`/staff-portal/dashboard/${id}/${status}`)
     await getTransaction()
 }
 
@@ -72,7 +72,7 @@ async function changeStatus(event) {
     
     // console.log(`buttonid:`,transactionNum)
 
-    if (status == "Pending") { 
+    if (status == "Received Order") { 
         
         button.classList.remove("btn-danger")
         button.classList.add("btn-warning")
@@ -98,7 +98,7 @@ async function changeStatus(event) {
 getTransaction()
 
 // refreshing
-setInterval(function() { 
-    getTransaction()
-    // console.log(`refreshing...`)
- }, 2500)
+// setInterval(function() { 
+//     getTransaction()
+//     // console.log(`refreshing...`)
+//  }, 2500)

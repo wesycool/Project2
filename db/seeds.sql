@@ -93,8 +93,8 @@ INSERT INTO tax VALUES(0, "YT", 5, default);
 
 -- transactions ( id, client_id, isDelivery, isPaid, gross_total, tax_id, tax_amount, net_total, createdAt )
 -- INSERT INTO transactions VALUES(0, client_id, isDelivery, isPaid, gross_total, tax_id, tax_amount, net_total, default);
-INSERT INTO transactions VALUES(0, 1, "Pending",TRUE, TRUE, 21.97, 9, 13, 24.83, default);
-INSERT INTO transactions VALUES(0, 2, "Pending",TRUE, TRUE, 21.97, 9, 13, 24.83, default);
-INSERT INTO transactions VALUES(0, 3, "Pending",TRUE, TRUE, 21.97, 9, 13, 24.83, default);
-INSERT INTO transactions VALUES(0, 4, "Pending",TRUE, TRUE, 21.97, 9, 13, 24.83, default);
-INSERT INTO transactions VALUES(0, 5, "Pending",TRUE, TRUE, 21.97, 9, 13, 24.83, default);
+INSERT INTO transactions VALUES(0, 1, "Received Order",TRUE, TRUE, 21.97, 9, 13, 24.83, default);
+INSERT INTO transactions VALUES(0, 2, "Received Order",TRUE, TRUE, 21.97, 9, 13, 24.83, default);
+INSERT INTO transactions VALUES(0, 3, "Received Order",TRUE, TRUE, 21.97, 9, 13, 24.83, default);
+INSERT INTO transactions VALUES(0, 4, "Received Order",TRUE, TRUE, 21.97, 9, 13, 24.83, default);
+INSERT INTO transactions VALUES(0, 5, "Received Order",TRUE, TRUE, 21.97, 9, 13, 24.83, default);
