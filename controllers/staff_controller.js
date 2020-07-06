@@ -103,7 +103,7 @@ router.get('/pat-test/:tableName', async (req,res) => {
 
   res.send(list)
 
-  console.log(list)
+  // console.log(list)
 
 })
 
@@ -120,14 +120,12 @@ router.get('/pat-test/:id/:status', async (req, res) => {
 })
 
 router.get('/transactionitems/:transactionNum', async (req,res) => {
-
   const {transactionNum} = req.params
   const products = await theCrashers.getPrdTrans(transactionNum)
 
   // console.log(products)
 
   res.send(products)
-
 })
 
 
