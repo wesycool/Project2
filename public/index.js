@@ -1,10 +1,9 @@
+let cart = []
 // get product list
 async function getProducts() {
     const products = await fetch("./myapi/products").then(response => response.json())
     
     console.log(products)
-    // style="width: 18rem;"
-    // const prdbody = 
         for (const {id, description, set_price} of products) {
             document.querySelector("#productBody").innerHTML += 
             `
@@ -23,7 +22,7 @@ async function getProducts() {
                                     <path fill-rule="evenodd" d="M10 12.796L4.519 8 10 3.204v9.592zm-.659.753l-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z"/>
                                 </svg></button>
                                 </div>
-                                <input type="text" class="form-control text-center" placeholder="0">
+                                <input id="qty${id}" data-productId="${id}" type="text" class="form-control text-center" value="0">
                                 <div>
                                     <button data-productId="${id}" onclick="decrease(event)" class="btn btn-outline-secondary" type="button"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M6 12.796L11.481 8 6 3.204v9.592zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
@@ -39,18 +38,51 @@ async function getProducts() {
 }
 
 function increase(event) {
-    const button = event.currentTarget
-    const productId = button.dataset.productId
+    event.preventDefault();
+    // console.log(event)
+    
+    const btn = event.currentTarget
+    const productId = btn.dataset.productid
+    const productBtn = document.querySelector(`#qty${productId}`).value
 
-    console.log(`increase`,productId)
-    // sessionStorage
+    let quantity = parseInt(productBtn) + 1 
+    document.querySelector(`#qty${productId}`).value = quantity
+    
+    cart[productId] = {'quantity':quantity}
+
+    // cart = {'id':productId, 'quantity':quantity}
+
+
+    console.log(cart)
 }
 
 function decrease(event) {
-    const button = event.currentTarget
-    const productId = button.dataset.productId
+    event.preventDefault()
+    const btn = event.currentTarget
+    const productId = btn.dataset.productid
+    const productBtn = document.querySelector(`#qty${productId}`).value
 
-    console.log(`decrease`,productId)
+    let quantity = productBtn > 0 ? parseInt(productBtn) - 1 : parseInt(productBtn)
+    document.querySelector(`#qty${productId}`).value = quantity
 
-} 
+    cart[productId] = {'quantity':quantity}
+    // cart = {'id':productId, 'quantity':quantity}
+
+    console.log(cart)
+
+}
+
+function checkout(event) {
+    event.preventDefault()
+
+    console.log(`cart before stringify`,cart)
+
+    const result = cart.filter(cart => cart.quantity != 0)
+
+    console.log(`cart before stringify`,result)
+
+    sessionStorage.cart = JSON.stringify(result)
+
+}
+
 getProducts()

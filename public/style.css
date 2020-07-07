@@ -15,3 +15,10 @@ img {
     /* width: 200px;
     height: auto;  */
 }
+
+#checkout {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 1em;
+}

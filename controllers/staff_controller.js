@@ -72,7 +72,7 @@ router.get('/staff-portal/api/:api/:units/:lat/:lon', async (req,res) => {
 // pat-test HAHAHA
 router.get('/myapi/:table', async (req,res) => {
   const {table} = req.params
-  const list = await theCrashers.getTable(table)
+  const list = await models.selectAll(table)
 
   // console.log(list)
 
