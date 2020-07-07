@@ -128,6 +128,15 @@ router.get('/staff-portal/dashboard/transactionitems/:transactionNum', async (re
   res.send(products)
 })
 
+// pat-test HAHAHA
+router.get('/myapi/:table', async (req,res) => {
+  const {table} = req.params
+  const list = await theCrashers.getTable(table)
+
+  // console.log(list)
+
+  res.send(list)
+})
 
 // Export routes for server.js to use.
 module.exports = router;

@@ -1,0 +1,17 @@
+body {
+    background-color: #202020;
+}
+
+h2 {
+    text-align:center;
+}
+
+.mycol {
+    margin-bottom: 15px;
+}
+
+img {
+    position: relative;
+    /* width: 200px;
+    height: auto;  */
+}
