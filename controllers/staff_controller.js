@@ -79,5 +79,14 @@ router.get('/myapi/:table', async (req,res) => {
   res.send(list)
 })
 
+// Post Test
+app.post('/posttest', function(req, res){
+  console.log(req.body);      // your JSON
+  res.send("Received");    // echo the result back
+});
+
+
 // Export routes for server.js to use.
 module.exports = router;
+
+
