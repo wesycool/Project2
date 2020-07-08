@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS the_crashers_db;
-CREATE database the_crashers_db;
+DROP DATABASE IF EXISTS dice_pizzaria;;
+CREATE database dice_pizzaria;;
 
-USE the_crashers_db;
+USE dice_pizzaria;;
 
 CREATE TABLE client (
 	id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -54,6 +54,7 @@ CREATE TABLE products (
 	description VARCHAR(255),
 	size VARCHAR(10),
 	set_price DECIMAL(10,2),
+	archive BOOLEAN,
 	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
