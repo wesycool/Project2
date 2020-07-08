@@ -164,49 +164,54 @@ function checkout(event) {
     const phone = document.querySelector('#postal').value
     form = {first_name, last_name, email, address, address_2, country, province, city, postal_code, phone}
     console.log(form)
-    localStorage.completeForm = JSON.stringify(form)
+    // localStorage.completeForm = JSON.stringify(form)
 
     document.querySelector('#checkoutPage').classList.toggle('dropdown')
     document.querySelector('#statusPage').classList.toggle('dropdown')
 
-    confirmClient()
+    confirmClient(form)
 }
 // code ***END*** for checkout page
 
 
 
 // Add client info of current transaction
-async function confirmClient(){
+async function confirmClient(data){
     // PLaceholder for grabbing current status
     // fetch('/staff-portal/api/table/client/email/{the email}')
     // const transactions = await fetch("/staff-portal/api/table/transactions").then(response => response.json())
     // const transaction = transactions.filter(transaction => transaction.client_id = )
-    document.querySelector('#clientInfo').innerHTML =
-        `
-        <p>Name: ${clientInfo.first_name} ${clientInfo.last_name} 
-        <br>E-mail: ${clientInfo.email} 
-        <br>Address: ${clientInfo.address} 
-        ${clientInfo.address_2 ? `<br>Address 2: clientInfo.address_2` : ""} 
-        <br>Country: ${clientInfo.country} 
-        <br>Province: ${clientInfo.province}
-        <br>City: ${clientInfo.city} 
-        <br>Postal Code: ${clientInfo.postal_code} 
-        <br>Phone Number: ${clientInfo.phone}
-        <br>Transaction #${clientInfo.phone}</p>
-        `
+    // fetch('./posttest', {method:'post', body: JSON.stringify(data)})
 
-    for (item of cartItems) {
-        if (item.quantity > 0) {
-            document.querySelector('#cartItemsStatus').innerHTML +=
-            `
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                    <h6 class="my-0">${item.description}</h6>
-                </div>
-                <span class="text-muted">${item.price}</span>
-            </li>
-            `
-        }
-    }
+
+    fetch('./posttest', { method: 'POST', headers: {'Accept': 'application/json', 'Content-Type': 'application/json'}, body: JSON.stringify(data)});
+
+    // document.querySelector('#clientInfo').innerHTML =
+    //     `
+    //     <p>Name: ${clientInfo.first_name} ${clientInfo.last_name} 
+    //     <br>E-mail: ${clientInfo.email} 
+    //     <br>Address: ${clientInfo.address} 
+    //     ${clientInfo.address_2 ? `<br>Address 2: clientInfo.address_2` : ""} 
+    //     <br>Country: ${clientInfo.country} 
+    //     <br>Province: ${clientInfo.province}
+    //     <br>City: ${clientInfo.city} 
+    //     <br>Postal Code: ${clientInfo.postal_code} 
+    //     <br>Phone Number: ${clientInfo.phone}
+    //     <br>Transaction #${clientInfo.phone}</p>
+    //     `
+
+    // for (item of cartItems) {
+    //     if (item.quantity > 0) {
+    //         document.querySelector('#cartItemsStatus').innerHTML +=
+    //         `
+    //         <li class="list-group-item d-flex justify-content-between lh-condensed">
+    //             <div>
+    //                 <h6 class="my-0">${item.description}</h6>
+    //             </div>
+    //             <span class="text-muted">${item.price}</span>
+    //         </li>
+    //         `
+    //     }
+    // }
 }
 
