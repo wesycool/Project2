@@ -12,22 +12,22 @@ const router = express.Router();
 // Get Client Main Page
 router.get("/", (req, res) => {
     res.render("index");
-});
+})
 
 // Get Staff Portal Login Page
 router.get("/staff-portal/login", (req, res) => {
   res.render("staff-login");
-});
+})
 
 // Get Staff Portal Page
 router.get("/staff-portal/", (req, res) => {
   res.render("staff-index", staffIndexJSON);
-});
+})
 
 // Get Staff Dashboard Page
 router.get("/staff-portal/dashboard", (req, res) => {
   res.render("staff-dashboard");
-});
+})
 
 // Get Data of a Table
 router.get('/staff-portal/api/table/:tab', async (req,res) => {
@@ -42,14 +42,11 @@ router.get('/staff-portal/api/table/:tab/:field/:params', async (req,res) => {
   res.send(getData)
 })
 
-
 // Get Data of Joint Table
 router.get('/staff-portal/api/join/alltrans', async (req,res) => {
   const list = await models.getJoinAll()
   res.send(list)
 })
-
-
 
 //Pats test
 router.get('/staff-portal/api/post/:id/:status', async (req, res) => {
@@ -58,8 +55,6 @@ router.get('/staff-portal/api/post/:id/:status', async (req, res) => {
   await models.updateStatus(id, status)
   res.send(test)
 })
-
-
 
 // Get weather data - To fetch weather api data while hidding API key
 router.get('/staff-portal/api/:api/:units/:lat/:lon', async (req,res) => {
@@ -80,13 +75,29 @@ router.get('/myapi/:table', async (req,res) => {
 })
 
 // Post Test
-app.post('/posttest', function(req, res){
-  console.log(req.body);      // your JSON
+router.post('/posttest', function(req, res){
+  // console.log(req.body);      // your JSON
   res.send("Received");    // echo the result back
-});
+})
 
+router.get('/client', (req,res) => {
+    
+    //     client: [
+    //         {
+    //             name: 'selection',
+    //             partials:'/client/selection'
+    //         },
+    //         {
+    //             name: 'checkout'
+    //         },
+    //         {
+    //             name: 'confirm'
+
+    //         }]
+    // }
+
+    res.render('index', {layout: false})
+})
 
 // Export routes for server.js to use.
 module.exports = router;
-
-
