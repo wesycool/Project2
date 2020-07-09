@@ -6,7 +6,7 @@ Dice Pizzeria is a full service restaurant management and online ordering system
 
 With an easy to use UI for customers to place orders and a concise back end for receiving orders, Dice Pizzeria is capable of running their restaurant at optimal capability.
 
-![ss](https://github.com/wesycool/Project2/blob/develop/pic.jpg?raw=true)
+![pic](pic.jpg?raw=true "Dice Pizzeria")
 
 ## Table of Contents
 [Dice Pizzeria](#Dice-Pizzeria)
